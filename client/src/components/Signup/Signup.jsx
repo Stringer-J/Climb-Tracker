@@ -6,9 +6,10 @@ function Signup() {
             <div className='signupBody'>
                 <form>
                     SIGNUP<br /><br />
-                    <input type='text' placeholder='username'></input><br /><br />
-                    <input type='email' placeholder='email'></input><br /><br />
-                    <input type='password' placeholder='password'></input>
+                    <input type='text' placeholder='username'></input><br />
+                    <input type='email' placeholder='email'></input><br />
+                    <input type='password' placeholder='password'></input><br />
+                    <button>Submit</button>
                 </form>
             </div>
         </>
