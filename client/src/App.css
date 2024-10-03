@@ -13,17 +13,34 @@ html, body {
   width: 100vw;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  /* justify-content: center; */
 }
 
 .header {
-  /* background-color: aqua; */
+  background-color: lightblue;
   border-bottom: solid black 2px;
   height: 10%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 .footer {
-  /* background-color: bisque; */
+  background-color: lightblue;
   border-top: solid black 2px;
-  height: 10%;
+  height: 7%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: auto;
+}
+
+.mainButton {
+  width: 50vw;
+  height: 5vh;
+}
+
+.mainButton:hover {
+  background-color: black;
+  color: aliceblue;
 }
