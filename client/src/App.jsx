@@ -1,7 +1,13 @@
 import { useState } from 'react'
+import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import './App.css'
 import Signup from './components/Signup/Signup.jsx';
 import Login from './components/Login/Login.jsx';
+
+export const client = new ApolloClient({
+  uri: '/graphql',
+  cache: new InMemoryCache(),
+});
 
 function App() {
   const [mainButtonChoice, setMainButtonChoice] = useState(null);
@@ -21,6 +27,7 @@ function App() {
 
   return (
     <>
+    <ApolloProvider client={client}>
       <div className='appBox'>
           <div className='header'>
               <h1>Climb Tracker</h1>
@@ -42,6 +49,7 @@ function App() {
               <h4>This is a footer</h4>
           </div>
       </div>
+    </ApolloProvider>
     </>
   )
 }
