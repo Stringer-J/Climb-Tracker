@@ -5,7 +5,14 @@ function App() {
 
   return (
     <>
-      APP
+      <div className='appBox'>
+          <div className='header'>
+
+          </div>
+          <div className='footer'>
+
+          </div>
+      </div>
     </>
   )
 }
