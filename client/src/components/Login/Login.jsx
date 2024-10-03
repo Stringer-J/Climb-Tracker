@@ -1,10 +1,20 @@
 import './Login.css';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { useQuery } from '@apollo/client';
+import { GET_SINGLE_USER } from '../../utils/queries';
+import { AuthContext } from '../../utils/AuthContext.jsx';
 
 function Login() {
     const [loginFormData, setLoginFormData] = useState({
         email: '',
         password: '',
+    });
+
+    const { login } = useContext(AuthContext);
+
+    const { data } = useQuery(GET_SINGLE_USER, {
+        variables: { email: loginFormData.email },
+        skip: !loginFormData.email
     });
 
     const handleInputChange = (e) => {
@@ -17,7 +27,15 @@ function Login() {
 
     const handleLoginSubmit = (e) => {
         e.preventDefault();
-        console.log(loginFormData);
+        console.log('Login Form Data:', loginFormData);
+        try {
+            if (data && data.getUser) {
+                console.log('User found:', data.getUser);
+                login(data.getUser);
+            }
+        } catch (err) {
+            console.error('Error finding user:', err);
+        }
     };
 
     return (
