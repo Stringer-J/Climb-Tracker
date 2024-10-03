@@ -17,45 +17,56 @@ function App() {
   return (
     <>
     <AuthProvider>
-    <ApolloProvider client={client}>
-      <Router>
-      <div className='appBox'>
-          <div className='header'>
-              <h1>Climb Tracker</h1>
-          </div>
-          <div className='mainButtons'>
+        <ApolloProvider client={client}>
+            <Router>
+                <div className='appBox'>
+
+                    <div className='header'>
+                        <h1>Climb Tracker</h1>
+                    </div>
+
+                    <div className='mainButtons'>
               
-              <Link to='/signup'>
-              <button className='mainButton'>Sign Up</button>
-              </Link>
+                        <Link to='/signup'>
+                            <button className='mainButton'>Sign Up</button>
+                        </Link>
         
-              <Link to='/login'>
-              <button className='mainButton'>Login</button>
-              </Link>
-          </div>
-          <div className='mainContent'>
-              <MainContent />
-          </div>
-          <div className='footer'>
-              <h4>This is a footer</h4>
-          </div>
-      </div>
-      </Router>
-    </ApolloProvider>
+                        <Link to='/login'>
+                            <button className='mainButton'>Login</button>
+                        </Link>
+
+                    </div>
+
+                    <div className='mainContent'>
+                        <MainContent />
+                    </div>
+
+                    <div className='footer'>
+                        <h4>This is a footer</h4>
+                    </div>
+
+                </div>
+            </Router>
+        </ApolloProvider>
     </AuthProvider>
     </>
   )
 }
 
 const MainContent = () => {
-  const { user } = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
 
   return (
       <Routes>
+
           <Route path='/signup' element={<Signup />} />
+
           <Route path='/login' element={user ? <Navigate to='/profile' /> : <Login />} />
+
           <Route path='/profile' element={user ? <Profile /> : <Navigate to='/login' />} />
+
           <Route path='*' element={<Navigate to='/login' />} />
+
       </Routes>
   );
 };
