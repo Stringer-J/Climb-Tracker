@@ -21,7 +21,7 @@ html, body {
   border-bottom: solid black 2px;
   height: 10%;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
 }
 
