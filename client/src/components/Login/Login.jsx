@@ -1,14 +1,45 @@
 import './Login.css';
+import { useState } from 'react';
 
 function Login() {
+    const [loginFormData, setLoginFormData] = useState({
+        email: '',
+        password: '',
+    });
+
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setLoginFormData((prevData) => ({
+            ...prevData,
+            [name]: value,
+        }));
+    };
+
+    const handleLoginSubmit = (e) => {
+        e.preventDefault();
+        console.log(loginFormData);
+    };
+
     return (
         <>
             <div className='loginBody'>
-                <form>
+                <form onSubmit={handleLoginSubmit}>
                     LOGIN<br /><br />
-                    <input type='email' placeholder='email'></input><br />
-                    <input type='password' placeholder='password'></input><br />
-                    <button>Submit</button>
+                    <input 
+                        type='email'
+                        name='email'
+                        placeholder='email'
+                        value={loginFormData.email}
+                        onChange={handleInputChange} 
+                    /><br />
+                    <input 
+                        type='password'
+                        name='password'
+                        placeholder='password'
+                        value={loginFormData.password}
+                        onChange={handleInputChange} 
+                    /><br />
+                    <button type='submit'>Submit</button>
                 </form>
             </div>
         </>
