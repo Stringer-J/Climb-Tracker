@@ -1,7 +1,25 @@
 .profileBody {
     display: flex;
+    flex-direction: row;
+    height: 100%;
+}
+
+.profileLeft {
+    background-color: lavenderblush;
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100%;
+    width: 50%;
+}
+
+.profileRight {
+    background-color: lightskyblue;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 50%;
 }
