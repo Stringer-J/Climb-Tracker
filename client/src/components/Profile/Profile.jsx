@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 
 function Profile() {
-    const [exerciseFormData, setExerciseFormData] = useState({
+    const [exercise, setExercise] = useState({
         date: '',
         exercise: '',
         sets: '',
@@ -13,15 +13,31 @@ function Profile() {
         weight: '',
     });
 
+    const [exerciseList, setExerciseList] = useState([]);
+
     const { logout } = useContext(AuthContext);
     const navigate = useNavigate();
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
-        setExerciseFormData((prevData) => ({
+        setExercise((prevData) => ({
             ...prevData,
             [name]: value,
         }));
+    };
+
+    const handleAddExercise = (e) => {
+        e.preventDefault();
+        if (exercise.date && exercise.exercise && exercise.sets && exercise.reps && exercise.weight) {
+            setExerciseList((prevData) => [...prevData, exercise]);
+            setExercise({ date: '', exercise: '', sets: '', reps: '', weight: '' });
+        }
+    };
+
+    const handleSubmitExerciseList = (e) => {
+        e.preventDefault();
+        console.log('Submitting List:', exerciseList);
+        setExerciseList([]);
     };
 
     const handleLogout = () => {
@@ -34,19 +50,19 @@ function Profile() {
             <div className='profileBody'>
                 <div className='profileLeft'>
                     PROFILE<br /><br />
-                    <form>
+                    <form onSubmit={handleAddExercise}>
                         <input
                             type='date'
                             name='date'
                             placeholder='date'
-                            value={exerciseFormData.date}
+                            value={exercise.date}
                             onChange={handleInputChange}
                         /><br />
                         <input
                             type='text'
                             name='exercise'
                             placeholder='exercise'
-                            value={exerciseFormData.exercise}
+                            value={exercise.exercise}
                             onChange={handleInputChange}
                         /><br />
                         <input
@@ -54,7 +70,7 @@ function Profile() {
                             name='sets'
                             placeholder='sets'
                             min='1'
-                            value={exerciseFormData.sets}
+                            value={exercise.sets}
                             onChange={handleInputChange}
                         /><br />
                         <input
@@ -62,7 +78,7 @@ function Profile() {
                             name='reps'
                             placeholder='reps'
                             min='1'
-                            value={exerciseFormData.reps}
+                            value={exercise.reps}
                             onChange={handleInputChange}
                         /><br />
                         <input
@@ -71,15 +87,29 @@ function Profile() {
                             placeholder='weight'
                             min='0'
                             step='0.1'
-                            value={exerciseFormData.weight}
+                            value={exercise.weight}
                             onChange={handleInputChange}
                         /><br />
-                        <button type='submit'>Submit</button>
+                        <button type='submit'>Add Exercise</button>
                     </form><br /><br />
                     <button onClick={handleLogout}>Logout</button>
                 </div>
                 <div className='profileRight'>
-                    
+                    Exercise List
+                    <ul>
+                        {exerciseList.map((ex, index) => (
+                            <li key={index}>
+                                {ex.date}<br />
+                                {ex.exercise}<br />
+                                {ex.sets} sets<br />
+                                {ex.reps} reps<br />
+                                {ex.weight} lbs<br /><br />
+                            </li>
+                        ))}
+                    </ul>
+                    {exerciseList.length > 0 && (
+                        <button onClick={handleSubmitExerciseList}>Submit Workout</button>
+                    )}
                 </div>
             </div>
         </>
