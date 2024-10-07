@@ -9,3 +9,18 @@ export const ADD_USER_MUTATION = gql`
         }
     }
 `;
+
+export const ADD_WORKOUT = gql`
+  mutation AddWorkout($userId: ID!, $date: String!, $exercises: [ExerciseInput!]!) {
+    addWorkout(userId: $userId, date: $date, exercises: $exercises) {
+      userId
+      date
+      exercises {
+        name
+        sets
+        reps
+        weight
+      }
+    }
+  }
+`;

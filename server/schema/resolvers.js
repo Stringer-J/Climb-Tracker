@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const { User } = require('../models/index.js');
+const { User, Workout } = require('../models/index.js');
 
 const resolvers = {
     Query: {
@@ -51,6 +51,12 @@ const resolvers = {
             } catch(err) {
                 throw new Error('Failed to create new user');
             }
+        },
+
+        addWorkout: async (_, { userId, date, exercises }) => {
+            const newWorkout = new Workout({ userId, date, exercises });
+            await newWorkout.save();
+            return newWorkout;
         },
     },
 };

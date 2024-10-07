@@ -1,5 +1,8 @@
 import './TrainingAdd.css';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { AuthContext } from '../../../utils/AuthContext';
+import { useMutation } from '@apollo/client';
+import { ADD_WORKOUT } from '../../../utils/mutations';
 
 const exerciseOptions = [
     { value: 'push-ups', label: 'Push-Ups'},
@@ -21,6 +24,9 @@ const exerciseOptions = [
 
 
 function Training() {
+    const { user } = useContext(AuthContext);
+    const [addWorkout] = useMutation(ADD_WORKOUT);
+
     const [exercise, setExercise] = useState({
         date: '',
         exercise: '',
@@ -60,11 +66,30 @@ function Training() {
         };
     };
 
-    const handleSubmitExerciseList = (e) => {
+    const handleSubmitExerciseList = async (e) => {
         e.preventDefault();
         console.log('Submitting List:', exerciseList);
-        setExerciseList([]);
-        setWorkoutDate(false);
+
+        try {
+            const res = await addWorkout({
+                variables: {
+                    userId: user._id,
+                    date: exercise.date,
+                    exercises: exerciseList.map(({ exercise, sets, reps, weight }) => ({
+                        name: exercise,
+                        sets: parseInt(sets),
+                        reps: parseInt(reps),
+                        weight: parseFloat(weight),
+                    })),
+                },
+            });
+
+            console.log('Workout submitted:', res.data.addWorkout);
+            setExerciseList([]);
+            setWorkoutDate(false);
+        } catch (err) {
+            console.error('Error submitting workout:', err)
+        }
     };
 
     return (
