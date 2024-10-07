@@ -33,7 +33,6 @@ function Training() {
 
     const [exerciseList, setExerciseList] = useState([]);
 
-    const { logout } = useContext(AuthContext);
     const navigate = useNavigate();
 
     const handleInputChange = (e) => {
@@ -61,11 +60,6 @@ function Training() {
         e.preventDefault();
         console.log('Submitting List:', exerciseList);
         setExerciseList([]);
-    };
-
-    const handleLogout = () => {
-        logout();
-        navigate('/login');
     };
 
     return (
@@ -120,7 +114,6 @@ function Training() {
                         /><br />
                         <button type='submit'>Add Exercise</button>
                     </form><br /><br />
-                    <button onClick={handleLogout}>Logout</button>
                 </div>
                 <div className='trainingRight'>
                     Exercise List

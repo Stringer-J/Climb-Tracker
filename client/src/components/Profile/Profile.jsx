@@ -8,6 +8,10 @@ function Profile() {
     const { user, logout } = useContext(AuthContext);
     const navigate = useNavigate();
 
+    const handleTraining = () => {
+        navigate('/training');
+    }
+
     const handleLogout = () => {
         logout();
         navigate('/login');
@@ -18,8 +22,8 @@ function Profile() {
             <div className='profileBody'>
                PROFILE<br />
                <h1>{user.username}</h1>
-               <button className='profileButton'>Training</button>
-               <button className='profileButton' onClick={handleLogout}>Logout</button>
+                    <button className='profileButton' onClick={handleTraining}>Training</button>
+                    <button className='profileButton' onClick={handleLogout}>Logout</button>
             </div>
         </>
     );
