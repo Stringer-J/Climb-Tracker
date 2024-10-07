@@ -8,6 +8,8 @@ import Login from './components/Login/Login.jsx';
 import Profile from './components/Profile/Profile.jsx';
 import TrainingMain from './components/Training/TrainingMain/TrainingMain.jsx';
 import TrainingAdd from './components/Training/TrainingAdd/TrainingAdd.jsx';
+import ClimbsMain from './components/Climbs/ClimbsMain/ClimbsMain.jsx';
+
 
 export const client = new ApolloClient({
   uri: '/graphql',
@@ -78,6 +80,8 @@ const MainContent = () => {
           <Route path='/trainingMain' element={<TrainingMain />} />
 
           <Route path='/trainingAdd' element={<TrainingAdd />} />
+
+          <Route path='/climbsMain' element={<ClimbsMain />} />
 
           <Route path='*' element={<Navigate to='/login' />} />
 
