@@ -57,7 +57,7 @@ function Login() {
                         value={loginFormData.password}
                         onChange={handleInputChange} 
                     /><br />
-                    <button type='submit'>Submit</button>
+                    <button className='usedButton' type='submit'>LOG IN</button>
                 </form>
             </div>
         </>

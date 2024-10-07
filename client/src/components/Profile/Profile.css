@@ -5,15 +5,3 @@
     height: 100%;
 }
 
-.profileButton {
-    width: 100vw;
-    height: 5vh;
-    color: aliceblue;
-    background-color: gray;
-}
-
-.unusedButton {
-    width: 100vw;
-    height: 5vh;
-}
-

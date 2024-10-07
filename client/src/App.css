@@ -50,3 +50,15 @@ html, body {
   height: 100%;
   width: 100%;
 }
+
+.usedButton {
+  width: 100vw;
+  height: 5vh;
+  color: aliceblue;
+  background-color: gray;
+}
+
+.unusedButton {
+  width: 100vw;
+  height: 5vh;
+}

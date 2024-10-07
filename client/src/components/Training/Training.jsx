@@ -81,7 +81,7 @@ function Training() {
                                 value={exercise.date}
                                 onChange={handleInputChange}
                             /><br />
-                            <button type='submit'>Set Date</button>
+                            <button className='usedButton' type='submit'>Set Date</button>
                         </form>
                     ) : (
                         <div>
@@ -124,8 +124,8 @@ function Training() {
                             value={exercise.weight}
                             onChange={handleInputChange}
                         /><br />
-                        <button type='submit'>Add Exercise</button>
-                    </form><br /><br />
+                        <button className='usedButton' onClick={handleAddExercise}>Add Exercise</button><br /><br />
+                    </form>
                 </div>
                     )}
                 </div>
@@ -133,15 +133,15 @@ function Training() {
                     <ul>
                         {exerciseList.map((ex, index) => (
                             <li key={index}>
-                                {ex.exercise}<br />
-                                -{ex.sets} sets -
-                                {ex.reps} reps - 
-                                {ex.weight} lbs<br /><br />
+                                {ex.exercise}<br /><hr />
+                                Sets: {ex.sets}<br />
+                                Reps: {ex.reps}<br />
+                                Weight: {ex.weight} lbs<br /><br />
                             </li>
                         ))}
                     </ul>
                     {exerciseList.length > 0 && (
-                        <button onClick={handleSubmitExerciseList}>Submit Workout</button>
+                        <button className='usedButton' onClick={handleSubmitExerciseList}>Submit Workout</button>
                     )}
                 </div>
             </div>

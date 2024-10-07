@@ -22,10 +22,10 @@ function Profile() {
             <div className='profileBody'>
                PROFILE<br />
                <h1>{user.username}</h1>
-                    <button className='profileButton' onClick={handleTraining}>Training</button>
+                    <button className='usedButton' onClick={handleTraining}>Training</button>
                     <button className='unusedButton'>Climbs</button>
                     <button className='unusedButton'>Settings</button>
-                    <button className='profileButton' onClick={handleLogout}>Logout</button>
+                    <button className='usedButton' onClick={handleLogout}>Logout</button>
             </div>
         </>
     );
