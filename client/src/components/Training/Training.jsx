@@ -133,10 +133,10 @@ function Training() {
                     <ul>
                         {exerciseList.map((ex, index) => (
                             <li key={index}>
-                                {ex.exercise}<br /><hr />
+                                <hr />{ex.exercise}<br /><hr />
                                 Sets: {ex.sets}<br />
                                 Reps: {ex.reps}<br />
-                                Weight: {ex.weight} lbs<br /><br />
+                                Weight: {ex.weight} lbs<br /><hr /><br />
                             </li>
                         ))}
                     </ul>
