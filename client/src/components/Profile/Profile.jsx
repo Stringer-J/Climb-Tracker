@@ -3,6 +3,24 @@ import { AuthContext } from '../../utils/AuthContext';
 import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+const exerciseOptions = [
+    { value: 'push-ups', label: 'Push-Ups'},
+    { value: 'pull-ups', label: 'Pull-Ups'},
+    { value: 'dips', label: 'Dips'},
+    { value: 'squats', label: 'Squats'},
+    { value: 'shoulder-press', label: 'Shoulder Press'},
+    { value: 'calf-raises', label: 'Calf Raises'},
+    { value: 'curls', label: 'Curls'},
+    { value: 'chin-ups', label: 'Chin-Ups'},
+    { value: 'hangs', label: 'Hangs'},
+    { value: 'reverse-flys', label: 'Reverse Flys'},
+    { value: 'ab-roller', label: 'Ab Roller'},
+    { value: 'face-pulls', label: 'Face Pulls'},
+    { value: 'run', label: 'Run'},
+    { value: 'foot-raises', label: 'Foot Raises'},
+    { value: 'weighted-butterflies', label: 'Weighted Butterflies'},
+]
+
 
 function Profile() {
     const [exercise, setExercise] = useState({
@@ -29,9 +47,14 @@ function Profile() {
     const handleAddExercise = (e) => {
         e.preventDefault();
         if (exercise.date && exercise.exercise && exercise.sets && exercise.reps && exercise.weight) {
-            setExerciseList((prevData) => [...prevData, exercise]);
+            const selectedExercise = exerciseOptions.find(opt => opt.value === exercise.exercise);
+            const exerciseToAdd = {
+                ...exercise,
+                exercise: selectedExercise ? selectedExercise.label : exercise.exercise
+            };
+            setExerciseList((prevData) => [...prevData, exerciseToAdd]);
             setExercise({ date: '', exercise: '', sets: '', reps: '', weight: '' });
-        }
+        };
     };
 
     const handleSubmitExerciseList = (e) => {
@@ -58,13 +81,18 @@ function Profile() {
                             value={exercise.date}
                             onChange={handleInputChange}
                         /><br />
-                        <input
-                            type='text'
+                        <select
                             name='exercise'
-                            placeholder='exercise'
                             value={exercise.exercise}
                             onChange={handleInputChange}
-                        /><br />
+                        >
+                            <option value='' disabled>Select Exercise</option>
+                            {exerciseOptions.map((opt) => (
+                                <option key={opt.value} value={opt.value}>
+                                    {opt.label}
+                                </option>
+                            ))}
+                        </select><br />
                         <input
                             type='number'
                             name='sets'
