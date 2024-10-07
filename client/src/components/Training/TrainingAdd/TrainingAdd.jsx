@@ -1,6 +1,5 @@
-import './Training.css';
+import './TrainingAdd.css';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 const exerciseOptions = [
     { value: 'push-ups', label: 'Push-Ups'},

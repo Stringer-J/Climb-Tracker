@@ -6,7 +6,8 @@ import './App.css'
 import Signup from './components/Signup/Signup.jsx';
 import Login from './components/Login/Login.jsx';
 import Profile from './components/Profile/Profile.jsx';
-import Training from './components/Training/Training.jsx';
+import TrainingMain from './components/Training/TrainingMain/TrainingMain.jsx';
+import TrainingAdd from './components/Training/TrainingAdd/TrainingAdd.jsx';
 
 export const client = new ApolloClient({
   uri: '/graphql',
@@ -74,7 +75,9 @@ const MainContent = () => {
 
           <Route path='/profile' element={user ? <Profile /> : <Navigate to='/login' />} />
 
-          <Route path='/training' element={<Training />} />
+          <Route path='/trainingMain' element={<TrainingMain />} />
+
+          <Route path='/trainingAdd' element={<TrainingAdd />} />
 
           <Route path='*' element={<Navigate to='/login' />} />
 

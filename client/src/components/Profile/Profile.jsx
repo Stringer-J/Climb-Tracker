@@ -9,7 +9,7 @@ function Profile() {
     const navigate = useNavigate();
 
     const handleTraining = () => {
-        navigate('/training');
+        navigate('/trainingMain');
     }
 
     const handleLogout = () => {
