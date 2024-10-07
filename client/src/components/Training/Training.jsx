@@ -72,7 +72,6 @@ function Training() {
         <>
             <div className='trainingBody'>
                 <div className='trainingLeft'>
-                    TRAINING<br /><br />
                     {!workoutDate ? (
                         <form onSubmit={handleDate}>
                             <input
@@ -86,15 +85,8 @@ function Training() {
                         </form>
                     ) : (
                         <div>
-                            <p>Date: {exercise.date}</p>
+                            <p>{exercise.date}</p>
                     <form onSubmit={handleAddExercise}>
-                        <input
-                            type='date'
-                            name='date'
-                            placeholder='date'
-                            value={exercise.date}
-                            onChange={handleInputChange}
-                        /><br />
                         <select
                             name='exercise'
                             value={exercise.exercise}
@@ -138,14 +130,12 @@ function Training() {
                     )}
                 </div>
                 <div className='trainingRight'>
-                    Exercise List
                     <ul>
                         {exerciseList.map((ex, index) => (
                             <li key={index}>
-                                {ex.date}<br />
                                 {ex.exercise}<br />
-                                {ex.sets} sets<br />
-                                {ex.reps} reps<br />
+                                -{ex.sets} sets -
+                                {ex.reps} reps - 
                                 {ex.weight} lbs<br /><br />
                             </li>
                         ))}

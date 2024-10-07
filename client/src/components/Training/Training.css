@@ -24,3 +24,7 @@
     width: 50%;
     overflow-y: auto;
 }
+
+ul {
+    list-style-type: none;
+}
