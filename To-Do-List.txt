@@ -1,0 +1,16 @@
+TRAINING
+    fix overflow-y issue where having too many exercises pushes the footer down
+    actually write code to submit workout data to database
+CLIMBS
+    thought: basically want to be able to record climbs you've done
+        EXAMPLE
+        name: Drier Goods
+        area: McKinney Falls
+        subarea: Scrunchy Wall
+        type: Boulder
+        grade: V0
+        length: NA
+        # of attempts: 1
+        comments: The only easy problem at McKinney
+        photo: i-did-it.jpeg
+        video: flash-attempt.mov
