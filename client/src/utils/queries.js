@@ -10,3 +10,18 @@ export const GET_SINGLE_USER = gql`
         }
     }
 `;
+
+export const GET_WORKOUTS = gql`
+  query GetWorkouts($userId: ID!) {
+    getWorkouts(userId: $userId) {
+      userId
+      date
+      exercises {
+        name
+        sets
+        reps
+        weight
+      }
+    }
+  }
+`;

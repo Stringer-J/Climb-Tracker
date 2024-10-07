@@ -33,6 +33,10 @@ const resolvers = {
                 throw new Error('Failed to get user');
             }
         },
+
+        getWorkouts: async (_, { userId }) => {
+            return await Workout.find({ userId });
+        },
     },
 
     Mutation: {
