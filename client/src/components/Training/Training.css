@@ -1,0 +1,26 @@
+.trainingBody {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+}
+
+.trainingLeft {
+    background-color: lavenderblush;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 50%;
+}
+
+.trainingRight {
+    background-color: lightskyblue;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 50%;
+    overflow-y: auto;
+}

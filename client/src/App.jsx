@@ -6,6 +6,7 @@ import './App.css'
 import Signup from './components/Signup/Signup.jsx';
 import Login from './components/Login/Login.jsx';
 import Profile from './components/Profile/Profile.jsx';
+import Training from './components/Training/Training.jsx';
 
 export const client = new ApolloClient({
   uri: '/graphql',
@@ -30,10 +31,8 @@ function App() {
                         <Link to='/signup'>
                             <button className='mainButton'>Sign Up</button>
                         </Link>
-        
-                        <Link to='/login'>
-                            <button className='mainButton'>Login</button>
-                        </Link>
+
+                        <MainButton />
 
                     </div>
 
@@ -53,6 +52,16 @@ function App() {
   )
 }
 
+const MainButton = () => {
+    const { user } = useContext(AuthContext);
+
+    return (
+        <Link to={user ? '/profile' : '/login'}>
+            <button className='mainButton'>{user ? 'Profile' : 'Login'}</button>
+        </Link>
+    );
+};
+
 const MainContent = () => {
     const { user } = useContext(AuthContext);
 
@@ -64,6 +73,8 @@ const MainContent = () => {
           <Route path='/login' element={user ? <Navigate to='/profile' /> : <Login />} />
 
           <Route path='/profile' element={user ? <Profile /> : <Navigate to='/login' />} />
+
+          <Route path='/training' element={<Training />} />
 
           <Route path='*' element={<Navigate to='/login' />} />
 

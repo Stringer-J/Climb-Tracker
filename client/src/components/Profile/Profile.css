@@ -1,26 +1,11 @@
 .profileBody {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    align-items: center;
     height: 100%;
 }
 
-.profileLeft {
-    background-color: lavenderblush;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    width: 50%;
-}
-
-.profileRight {
-    background-color: lightskyblue;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    width: 50%;
-    overflow-y: auto;
+.profileButton {
+    width: 100vw;
+    height: 5vh;
 }
