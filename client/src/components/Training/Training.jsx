@@ -1,6 +1,5 @@
 import './Training.css';
-import { AuthContext } from '../../utils/AuthContext';
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const exerciseOptions = [
@@ -32,8 +31,7 @@ function Training() {
     });
 
     const [exerciseList, setExerciseList] = useState([]);
-
-    const navigate = useNavigate();
+    const [workoutDate, setWorkoutDate] = useState(false);
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -43,16 +41,23 @@ function Training() {
         }));
     };
 
+    const handleDate = (e) => {
+        e.preventDefault();
+        if (exercise.date) {
+            setWorkoutDate(true);
+        }
+    };
+
     const handleAddExercise = (e) => {
         e.preventDefault();
-        if (exercise.date && exercise.exercise && exercise.sets && exercise.reps && exercise.weight) {
+        if (workoutDate && exercise.exercise && exercise.sets && exercise.reps && exercise.weight) {
             const selectedExercise = exerciseOptions.find(opt => opt.value === exercise.exercise);
             const exerciseToAdd = {
                 ...exercise,
-                exercise: selectedExercise ? selectedExercise.label : exercise.exercise
+                exercise: selectedExercise ? selectedExercise.label : exercise.exercise,
             };
             setExerciseList((prevData) => [...prevData, exerciseToAdd]);
-            setExercise({ date: '', exercise: '', sets: '', reps: '', weight: '' });
+            setExercise({ date: exercise.date, exercise: '', sets: '', reps: '', weight: '' });
         };
     };
 
@@ -60,13 +65,28 @@ function Training() {
         e.preventDefault();
         console.log('Submitting List:', exerciseList);
         setExerciseList([]);
+        setWorkoutDate(false);
     };
 
     return (
         <>
             <div className='trainingBody'>
                 <div className='trainingLeft'>
-                    PROFILE<br /><br />
+                    TRAINING<br /><br />
+                    {!workoutDate ? (
+                        <form onSubmit={handleDate}>
+                            <input
+                                type='date'
+                                name='date'
+                                placeholder='date'
+                                value={exercise.date}
+                                onChange={handleInputChange}
+                            /><br />
+                            <button type='submit'>Set Date</button>
+                        </form>
+                    ) : (
+                        <div>
+                            <p>Date: {exercise.date}</p>
                     <form onSubmit={handleAddExercise}>
                         <input
                             type='date'
@@ -114,6 +134,8 @@ function Training() {
                         /><br />
                         <button type='submit'>Add Exercise</button>
                     </form><br /><br />
+                </div>
+                    )}
                 </div>
                 <div className='trainingRight'>
                     Exercise List
