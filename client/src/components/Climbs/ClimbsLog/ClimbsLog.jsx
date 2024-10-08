@@ -23,6 +23,12 @@ const gradeOptions = [
     { value: 'V17', label: 'V17' },
 ];
 
+const typeOptions = [
+    { value: 'boulder', label: 'Boulder' },
+    { value: 'sport', label: 'Sport' },
+    { value: 'trad', label: 'Trad' },
+];
+
 function ClimbsLog() {
     const [climb, setClimb] = useState({
         name: '',
@@ -47,7 +53,7 @@ function ClimbsLog() {
     const handleLogClimb = (e) => {
         e.preventDefault();
         console.log('Logging Climb:', climb);
-        setClimb([]);
+        setClimb({});
     }
 
     return (
@@ -59,29 +65,46 @@ function ClimbsLog() {
                         type='text'
                         name='name'
                         placeholder='Name'
+                        value={climb.name}
+                        onChange={handleInputChange}
                     /><br />
                     <input
                         type='date'
                         name='date'
                         placeholder='Date'
+                        value={climb.date}
+                        onChange={handleInputChange}
                     /><br />
                     <input
                         type='text'
                         name='area'
                         placeholder='Area'
+                        value={climb.area}
+                        onChange={handleInputChange}
                     /><br />
                     <input
                         type='text'
-                        name='subarea'
+                        name='subArea'
                         placeholder='Sub-Area'
-                    /><br />
-                    <input
-                        type='text'
-                        name='type'
-                        placeholder='Type'
+                        value={climb.subArea}
+                        onChange={handleInputChange}
                     /><br />
                     <select
+                        name='type'
+                        value={climb.type}
+                        onChange={handleInputChange}
+                    >
+                        <option value='' disabled>Select Type</option>
+                        {typeOptions.map((opt) => (
+                            <option key={opt.value} value={opt.value}>
+                                {opt.label}
+                            </option>
+                        ))}
+                    </select><br />
+                    <select
                         name='grade'
+                        value={climb.grade}
+                        onChange={handleInputChange}
                     >
                         <option value='' disabled>Select Grade</option>
                         {gradeOptions.map((opt) => (
@@ -94,18 +117,24 @@ function ClimbsLog() {
                         type='text'
                         name='length'
                         placeholder='Length'
+                        value={climb.length}
+                        onChange={handleInputChange}
                     /><br />
                     <input
                         type='text'
                         name='numAttempts'
                         placeholder='Number Of Attempts'
+                        value={climb.numAttempts}
+                        onChange={handleInputChange}
                     /><br />
                     <input
                         type='text'
                         name='comments'
                         placeholder='Comments'
+                        value={climb.comments}
+                        onChange={handleInputChange}
                     /><br />
-                    <button className='unusedButton'>LOG CLIMB</button>
+                    <button className='usedButton'>LOG CLIMB</button>
                 </form>
             </div>
         </>
