@@ -2,7 +2,7 @@ TRAINING
     fix overflow-y issue where having too many exercises pushes the footer down
     DONE actually write code to submit workout data to database
 CLIMBS
-    thought: basically want to be able to record climbs you've done
+    DONE thought: basically want to be able to record climbs you've done
         EXAMPLE
         name: Drier Goods
         area: McKinney Falls
@@ -14,3 +14,5 @@ CLIMBS
         comments: The only easy problem at McKinney
         photo: i-did-it.jpeg
         video: flash-attempt.mov
+    need to write logic to submit climb to database
+    need to show past climbs on climbLogDetails page
