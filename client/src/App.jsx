@@ -1,13 +1,15 @@
-import { useContext, useState } from 'react'
+import { useContext } from 'react';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import { AuthContext, AuthProvider } from './utils/AuthContext.jsx';
 import { BrowserRouter as Router, Route, Routes, Link, Navigate } from 'react-router-dom';
-import './App.css'
+import './App.css';
 import Signup from './components/Signup/Signup.jsx';
 import Login from './components/Login/Login.jsx';
 import Profile from './components/Profile/Profile.jsx';
 import TrainingMain from './components/Training/TrainingMain/TrainingMain.jsx';
 import TrainingAdd from './components/Training/TrainingAdd/TrainingAdd.jsx';
+import TrainingPast from './components/Training/TrainingPast/TrainingPast.jsx';
+import TrainingPastDetails from './components/Training/TrainingPast/TrainingPastDetails/TrainingPastDetails.jsx';
 import ClimbsMain from './components/Climbs/ClimbsMain/ClimbsMain.jsx';
 
 
@@ -72,14 +74,14 @@ const MainContent = () => {
       <Routes>
 
           <Route path='/signup' element={<Signup />} />
-
           <Route path='/login' element={user ? <Navigate to='/profile' /> : <Login />} />
 
           <Route path='/profile' element={user ? <Profile /> : <Navigate to='/login' />} />
 
           <Route path='/trainingMain' element={<TrainingMain />} />
-
-          <Route path='/trainingAdd' element={<TrainingAdd />} />
+                <Route path='/trainingAdd' element={<TrainingAdd />} />
+                <Route path='/trainingPast' element={<TrainingPast />} />
+                <Route path='/trainingPastDetails' element={<TrainingPastDetails />} />
 
           <Route path='/climbsMain' element={<ClimbsMain />} />
 

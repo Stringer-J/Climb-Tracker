@@ -1,6 +1,6 @@
 TRAINING
     fix overflow-y issue where having too many exercises pushes the footer down
-    actually write code to submit workout data to database
+    DONE actually write code to submit workout data to database
 CLIMBS
     thought: basically want to be able to record climbs you've done
         EXAMPLE

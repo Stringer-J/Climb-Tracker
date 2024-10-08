@@ -4,5 +4,7 @@ ROOT
         -PROFILE
             -TRAINING
                 -LOG WORKOUT
+                -VIEW PAST WORKOUTS
+                    -DETAIL PAGE
             -CLIMBS
                 -LOG CLIMB
