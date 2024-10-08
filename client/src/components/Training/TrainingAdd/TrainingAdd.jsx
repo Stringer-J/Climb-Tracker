@@ -20,7 +20,7 @@ const exerciseOptions = [
     { value: 'run', label: 'Run'},
     { value: 'foot-raises', label: 'Foot Raises'},
     { value: 'weighted-butterflies', label: 'Weighted Butterflies'},
-]
+];
 
 
 function Training() {

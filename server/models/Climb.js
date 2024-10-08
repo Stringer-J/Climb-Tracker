@@ -7,6 +7,10 @@ const climbSchema = new Schema({
         type: String,
         required: true
     },
+    date: {
+        type: Date,
+        required: true
+    },
     area: {
         type: String,
         required: true

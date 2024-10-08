@@ -11,6 +11,7 @@ import TrainingAdd from './components/Training/TrainingAdd/TrainingAdd.jsx';
 import TrainingPast from './components/Training/TrainingPast/TrainingPast.jsx';
 import TrainingPastDetails from './components/Training/TrainingPast/TrainingPastDetails/TrainingPastDetails.jsx';
 import ClimbsMain from './components/Climbs/ClimbsMain/ClimbsMain.jsx';
+import ClimbsLog from './components/Climbs/ClimbsLog/ClimbsLog.jsx';
 
 
 export const client = new ApolloClient({
@@ -84,6 +85,7 @@ const MainContent = () => {
                 <Route path='/trainingPastDetails' element={<TrainingPastDetails />} />
 
           <Route path='/climbsMain' element={<ClimbsMain />} />
+                <Route path='/climbsLog' element={<ClimbsLog />} />
 
           <Route path='*' element={<Navigate to='/login' />} />
 
