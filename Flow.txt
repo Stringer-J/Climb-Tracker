@@ -8,3 +8,5 @@ ROOT
                     -DETAIL PAGE
             -CLIMBS
                 -LOG CLIMB
+                -VIEW PAST CLIMBS
+                    -DETAIL PAGE

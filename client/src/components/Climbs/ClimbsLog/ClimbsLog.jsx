@@ -61,27 +61,35 @@ function ClimbsLog() {
             <div className='climbsLogBody'>
                 LOG A CLIMB<br /><br />
                 <form onSubmit={handleLogClimb}>
-                    <input
-                        type='text'
-                        name='name'
-                        placeholder='Name'
-                        value={climb.name}
-                        onChange={handleInputChange}
-                    /><br />
-                    <input
-                        type='date'
-                        name='date'
-                        placeholder='Date'
-                        value={climb.date}
-                        onChange={handleInputChange}
-                    /><br />
-                    <input
-                        type='text'
-                        name='area'
-                        placeholder='Area'
-                        value={climb.area}
-                        onChange={handleInputChange}
-                    /><br />
+                    <label>
+                        <span style={{ color: 'red'}}>*</span>
+                        <input
+                            type='text'
+                            name='name'
+                            placeholder='Name'
+                            value={climb.name}
+                            onChange={handleInputChange}
+                        />
+                    </label><br />
+                    <label>
+                        <span style={{ color: 'red'}}>*</span>
+                        <input
+                            type='date'
+                            name='date'
+                            value={climb.date}
+                            onChange={handleInputChange}
+                        />
+                    </label><br />
+                    <label>
+                        <span style={{ color: 'red'}}>*</span>
+                        <input
+                            type='text'
+                            name='area'
+                            placeholder='Area'
+                            value={climb.area}
+                            onChange={handleInputChange}
+                        />
+                    </label><br />
                     <input
                         type='text'
                         name='subArea'
@@ -89,30 +97,36 @@ function ClimbsLog() {
                         value={climb.subArea}
                         onChange={handleInputChange}
                     /><br />
-                    <select
-                        name='type'
-                        value={climb.type}
-                        onChange={handleInputChange}
-                    >
-                        <option value='' disabled>Select Type</option>
-                        {typeOptions.map((opt) => (
-                            <option key={opt.value} value={opt.value}>
-                                {opt.label}
-                            </option>
-                        ))}
-                    </select><br />
-                    <select
-                        name='grade'
-                        value={climb.grade}
-                        onChange={handleInputChange}
-                    >
-                        <option value='' disabled>Select Grade</option>
-                        {gradeOptions.map((opt) => (
-                            <option key={opt.value} value={opt.value}>
-                                {opt.label}
-                            </option>
-                        ))}
-                    </select><br />
+                    <label>
+                        <span style={{ color: 'red'}}>*</span>
+                            <select
+                                name='type'
+                                value={climb.type}
+                                onChange={handleInputChange}
+                            >
+                                <option value='' disabled>Select Type</option>
+                                {typeOptions.map((opt) => (
+                                    <option key={opt.value} value={opt.value}>
+                                        {opt.label}
+                                    </option>
+                                ))}
+                            </select>
+                    </label><br />
+                    <label>
+                        <span style={{ color: 'red'}}>*</span>
+                        <select
+                            name='grade'
+                            value={climb.grade}
+                            onChange={handleInputChange}
+                        >
+                            <option value='' disabled>Select Grade</option>
+                            {gradeOptions.map((opt) => (
+                                <option key={opt.value} value={opt.value}>
+                                    {opt.label}
+                                </option>
+                            ))}
+                        </select>
+                    </label><br />
                     <input
                         type='text'
                         name='length'
