@@ -11,14 +11,14 @@ function ClimbLogDetail() {
         <>
             <div className='climbLogDetailBody'>
                 CLIMB DETAILS<br /><br />
-                NAME:<br /> {climb.name}<br /><br />
-                DATE:<br /> {new Date(Number(climb.date)).toISOString().slice(0, 10)}<br /><br />
-                AREA:<br /> {climb.area}, {climb.subArea}<br /><br />
-                TYPE:<br /> {climb.type}<br /><br />
-                GRADE:<br /> {climb.grade}<br /><br />
-                LENGTH:<br /> {climb.length}<br /><br />
-                ATTEMPTS:<br /> {climb.numAttempts}<br /><br />
-                COMMENTS:<br /> {climb.comments}<br />
+                NAME:<hr /> {climb.name}<br /><br />
+                DATE:<hr /> {new Date(Number(climb.date)).toISOString().slice(0, 10)}<br /><br />
+                AREA:<hr /> {climb.area}, {climb.subArea}<br /><br />
+                TYPE:<hr /> {climb.type}<br /><br />
+                GRADE:<hr /> {climb.grade}<br /><br />
+                LENGTH:<hr /> {climb.length} meters<br /><br />
+                ATTEMPTS:<hr /> {climb.numAttempts}<br /><br />
+                COMMENTS:<hr /> {climb.comments}<br />
             </div>
         </>
     );

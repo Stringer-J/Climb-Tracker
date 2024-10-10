@@ -14,5 +14,7 @@ CLIMBS
         comments: The only easy problem at McKinney
         photo: i-did-it.jpeg
         video: flash-attempt.mov
-    need to write logic to submit climb to database
-    need to show past climbs on climbLogDetails page
+    ??? need to write logic to submit climb to database
+            =need to address issue where length or numAttempts can't be empty
+    DONE need to show past climbs on climbLogDetails page
+    Need to change the grades based on boulder vs sport/trad

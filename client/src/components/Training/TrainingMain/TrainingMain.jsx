@@ -13,6 +13,10 @@ function TrainingMain() {
         navigate('/trainingPast');
     };
 
+    const handleTrainingStatsClick = () => {
+        navigate('/trainingStats');
+    };
+
     return (
         <>
             <div className='trainingMainBody'>
@@ -20,7 +24,7 @@ function TrainingMain() {
                     <button className='usedButton' onClick={handleTrainingAdd}>Log Workout</button>
                     <button className='usedButton' onClick={handleTrainingPast}>Past Workouts</button>
                     <button className='unusedButton'>Training Plan</button>
-                    <button className='unusedButton'>Statistics</button>
+                    <button className='usedButton' onClick={handleTrainingStatsClick}>Statistics</button>
             </div>
         </>
     );

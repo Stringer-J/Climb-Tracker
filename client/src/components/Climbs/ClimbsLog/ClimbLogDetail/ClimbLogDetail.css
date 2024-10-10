@@ -1,3 +1,7 @@
 .climbLogDetailBody {
     text-align: center;
 }
+
+hr {
+    margin: 0;
+}

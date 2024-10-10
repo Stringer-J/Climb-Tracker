@@ -12,13 +12,17 @@ function ClimbsMain() {
         navigate('/climbsLogPast');
     };
 
+    const handleClimbStatsClick = () => {
+        navigate('/climbStats');
+    };
+
     return (
         <>
             <div className='climbsMainBody'>
                 CLIMBS MAIN<br /><br />
                 <button className='usedButton' onClick={handleClimbLogClick}>Log Climb</button>
                 <button className='usedButton' onClick={handlePastClimbsClick}>Past Climbs</button>
-                <button className='unusedButton'>Statistics</button>
+                <button className='usedButton' onClick={handleClimbStatsClick}>Statistics</button>
             </div>
         </>
     );
