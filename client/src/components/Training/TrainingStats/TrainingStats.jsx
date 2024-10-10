@@ -16,12 +16,36 @@ function TrainingStats() {
 
     const workouts = data.getWorkouts || [];
     const workoutCount = workouts.length;
+
+    const exerciseCount = {};
+
+    workouts.forEach(workout => {
+        workout.exercises.forEach(exercise => {
+            const name = exercise.name;
+
+            if (exerciseCount[name]) {
+                exerciseCount[name] += 1;
+            } else {
+                exerciseCount[name] = 1;
+            }
+        });
+    });
     
     return (
         <>
             <div className='trainingStatsBody'>
                 TRAINING STATS<br /><br />
-                <div># of Workouts: {workoutCount}</div>
+                <div># of Workouts: <hr />{workoutCount}</div><br />
+                <div>
+                    Exercises:<hr />
+                    <ul>
+                        {Object.entries(exerciseCount).map(([exercise, count]) => (
+                            <li key={exercise}>
+                                {exercise}: {count} times
+                            </li>
+                        ))}
+                    </ul>
+                </div>
             </div>
         </>
     );
