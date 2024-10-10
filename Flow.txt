@@ -6,7 +6,9 @@ ROOT
                 -LOG WORKOUT
                 -VIEW PAST WORKOUTS
                     -DETAIL PAGE
+                -STATS
             -CLIMBS
                 -LOG CLIMB
                 -VIEW PAST CLIMBS
                     -DETAIL PAGE
+                -STATS

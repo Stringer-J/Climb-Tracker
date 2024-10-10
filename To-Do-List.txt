@@ -1,6 +1,7 @@
 TRAINING
     fix overflow-y issue where having too many exercises pushes the footer down
     DONE actually write code to submit workout data to database
+    Need to figure out what stats to show and then show them
 CLIMBS
     DONE thought: basically want to be able to record climbs you've done
         EXAMPLE
@@ -18,3 +19,4 @@ CLIMBS
             =need to address issue where length or numAttempts can't be empty
     DONE need to show past climbs on climbLogDetails page
     Need to change the grades based on boulder vs sport/trad
+    Need to figure out what stats to show and then show them
