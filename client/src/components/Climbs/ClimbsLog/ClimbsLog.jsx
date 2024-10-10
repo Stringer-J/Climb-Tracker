@@ -42,6 +42,18 @@ function ClimbsLog() {
         comments: '',
     });
 
+    const initialClimbForm = {
+        name: '',
+        date: '',
+        area: '',
+        subArea: '',
+        type: '',
+        grade: '',
+        length: '',
+        numAttempts: '',
+        comments: '',
+    };
+
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setClimb((prevData) => ({
@@ -53,7 +65,7 @@ function ClimbsLog() {
     const handleLogClimb = (e) => {
         e.preventDefault();
         console.log('Logging Climb:', climb);
-        setClimb({});
+        setClimb(initialClimbForm);
     }
 
     return (
