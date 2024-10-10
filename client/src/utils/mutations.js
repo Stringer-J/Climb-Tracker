@@ -24,3 +24,19 @@ export const ADD_WORKOUT = gql`
     }
   }
 `;
+
+export const ADD_CLIMB = gql`
+  mutation AddClimb($input: AddClimbInput!) {
+    addClimb(input: $input) {
+      name
+      date
+      area
+      subArea
+      type
+      grade
+      length
+      numAttempts
+      comments
+    }
+  }
+`;

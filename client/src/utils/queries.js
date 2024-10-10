@@ -25,3 +25,19 @@ export const GET_WORKOUTS = gql`
     }
   }
 `;
+
+export const GET_CLIMBS = gql`
+  query GetClimbs($userId: ID!) {
+    getClimbs(userId: $userId) {
+      name
+      date
+      area
+      subArea
+      type
+      grade
+      length
+      numAttempts
+      comments
+    }
+  }
+`;

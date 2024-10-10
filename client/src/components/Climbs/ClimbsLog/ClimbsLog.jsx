@@ -1,4 +1,8 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { AuthContext } from '../../../utils/AuthContext';
+import { useMutation } from '@apollo/client';
+import { ADD_CLIMB } from '../../../utils/mutations';
+
 import './ClimbsLog.css';
 
 const gradeOptions = [
@@ -30,6 +34,9 @@ const typeOptions = [
 ];
 
 function ClimbsLog() {
+    const { user } = useContext(AuthContext);
+    const [addClimb] = useMutation(ADD_CLIMB);
+
     const [climb, setClimb] = useState({
         name: '',
         date: '',
@@ -62,11 +69,35 @@ function ClimbsLog() {
         }));
     };
 
-    const handleLogClimb = (e) => {
+    const handleLogClimb = async (e) => {
         e.preventDefault();
         console.log('Logging Climb:', climb);
-        setClimb(initialClimbForm);
-    }
+
+        const requiredData = [ 'name', 'date', 'area', 'type', 'grade' ];
+
+        for (const data of requiredData) {
+            if (!climb[data]) {
+                console.error(`Field ${data} is required`);
+                return;
+            }
+        }
+
+        try {
+            const res = await addClimb({
+                variables: {
+                    input: {
+                        ...climb,
+                        userId: user._id,
+                    },
+                },
+            });
+
+            console.log('Climb Logged:', res.data.addClimb);
+            setClimb(initialClimbForm);
+        } catch (err) {
+            console.error('Error logging climb:', err)
+        }
+    };
 
     return (
         <>

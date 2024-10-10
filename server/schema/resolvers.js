@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const { User, Workout } = require('../models/index.js');
+const { User, Workout, Climb } = require('../models/index.js');
 
 const resolvers = {
     Query: {
@@ -37,6 +37,10 @@ const resolvers = {
         getWorkouts: async (_, { userId }) => {
             return await Workout.find({ userId });
         },
+
+        getClimbs: async (_, { userId }) => {
+            return await Climb.find({ userId });
+        },
     },
 
     Mutation: {
@@ -62,6 +66,32 @@ const resolvers = {
             await newWorkout.save();
             return newWorkout;
         },
+
+        addClimb: async (_, { input }) => {
+            console.log('Input:', input);
+            const requiredData = [ 'name', 'date', 'area', 'type', 'grade' ];
+            const newClimbData = {
+                name: input.name,
+                date: input.date,
+                area: input.area,
+                subArea: input.subArea || '',
+                type: input.type,
+                grade: input.grade,
+                length: input.length || '',
+                numAttempts: input.numAttempts || '',
+                comments: input.comments || '',
+            }
+
+            for (const data of requiredData) {
+                if (!newClimbData[data]) {
+                    throw new Error(`Field ${data} is required`);
+                }
+            }
+
+            const newClimb = new Climb(newClimbData);
+            await newClimb.save();
+            return newClimb;
+        }
     },
 };
 

@@ -1,8 +1,9 @@
-import './TrainingAdd.css';
 import { useState, useContext } from 'react';
 import { AuthContext } from '../../../utils/AuthContext';
 import { useMutation } from '@apollo/client';
 import { ADD_WORKOUT } from '../../../utils/mutations';
+
+import './TrainingAdd.css';
 
 const exerciseOptions = [
     { value: 'push-ups', label: 'Push-Ups'},
