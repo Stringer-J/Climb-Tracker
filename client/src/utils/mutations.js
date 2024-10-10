@@ -37,6 +37,7 @@ export const ADD_CLIMB = gql`
       length
       numAttempts
       comments
+      userId
     }
   }
 `;

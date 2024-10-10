@@ -63,9 +63,12 @@ function ClimbsLog() {
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
+
+        const newValue = (name === 'length' || name === 'numAttempts') ? (value ? parseInt(value, 10) : '') : value;
+
         setClimb((prevData) => ({
             ...prevData,
-            [name]: value,
+            [name]: newValue,
         }));
     };
 
@@ -74,10 +77,34 @@ function ClimbsLog() {
         console.log('Logging Climb:', climb);
         console.log('User:', user._id);
 
+        const input = {
+            userId: user._id,
+            name: climb.name,
+            date: climb.date,
+            area: climb.area,
+            subArea: climb.subArea || null,
+            type: climb.type,
+            grade: climb.grade,
+            length: climb.length || null,
+            numAttempts: climb.numAttempts || null,
+            comments: climb.comments || null,
+        };
+
+        if (input.length !== null && isNaN(input.length)) {
+            console.error('Length must be a valid number');
+            return;
+        }
+        if (input.numAttempts !== null && isNaN(input.numAttempts)) {
+            console.error('Number of attempts must be a valid number');
+            return;
+        }
+
+        console.log(input);
+
         const requiredData = [ 'name', 'date', 'area', 'type', 'grade' ];
 
         for (const data of requiredData) {
-            if (!climb[data]) {
+            if (!input[data]) {
                 console.error(`Field ${data} is required`);
                 return;
             }
@@ -87,8 +114,16 @@ function ClimbsLog() {
             const res = await addClimb({
                 variables: {
                     input: {
-                        ...climb,
                         userId: user._id,
+                        name: climb.name,
+                        date: climb.date,
+                        area: climb.area,
+                        subArea: climb.subArea || null,
+                        type: climb.type,
+                        grade: climb.grade,
+                        length: climb.length,
+                        numAttempts: climb.numAttempts,
+                        comments: climb.comments || null,
                     },
                 },
             });
@@ -172,17 +207,17 @@ function ClimbsLog() {
                         </select>
                     </label><br />
                     <input
-                        type='text'
+                        type='number'
                         name='length'
                         placeholder='Length'
-                        value={climb.length}
+                        value={climb.length || ''}
                         onChange={handleInputChange}
                     /><br />
                     <input
-                        type='text'
+                        type='number'
                         name='numAttempts'
                         placeholder='Number Of Attempts'
-                        value={climb.numAttempts}
+                        value={climb.numAttempts || ''}
                         onChange={handleInputChange}
                     /><br />
                     <input

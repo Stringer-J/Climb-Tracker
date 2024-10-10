@@ -18,6 +18,7 @@ const typeDefs = gql`
         length: Int
         numAttempts: Int
         comments: String
+        userId: ID
     }
 
     type Exercise {
@@ -61,8 +62,8 @@ const typeDefs = gql`
         subArea: String
         type: String!
         grade: String!
-        length: String
-        numAttempts: String
+        length: Int
+        numAttempts: Int
         comments: String
     }
 `;

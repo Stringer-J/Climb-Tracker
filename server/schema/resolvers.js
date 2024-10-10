@@ -77,8 +77,8 @@ const resolvers = {
                 subArea: input.subArea || '',
                 type: input.type,
                 grade: input.grade,
-                length: input.length || '',
-                numAttempts: input.numAttempts || '',
+                length: input.length ? parseInt(input.length) : null,
+                numAttempts: input.numAttempts ? parseInt(input.numAttempts): null,
                 comments: input.comments || '',
                 userId: input.userId,
             }
