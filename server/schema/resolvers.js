@@ -80,6 +80,7 @@ const resolvers = {
                 length: input.length || '',
                 numAttempts: input.numAttempts || '',
                 comments: input.comments || '',
+                userId: input.userId,
             }
 
             for (const data of requiredData) {

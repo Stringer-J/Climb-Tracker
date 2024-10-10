@@ -72,6 +72,7 @@ function ClimbsLog() {
     const handleLogClimb = async (e) => {
         e.preventDefault();
         console.log('Logging Climb:', climb);
+        console.log('User:', user._id);
 
         const requiredData = [ 'name', 'date', 'area', 'type', 'grade' ];
 

@@ -34,7 +34,8 @@ const climbSchema = new Schema({
     },
     comments: {
         type: String
-    }
+    },
+    userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
 });
 
 const Climb = mongoose.model('Climb', climbSchema);
