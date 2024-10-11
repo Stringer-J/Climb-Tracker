@@ -5,8 +5,8 @@ import PropTypes from "prop-types";
 const ClimbGradeBarChart = ({ data }) => {
     useEffect(() => {
         const svgWidth = 500;
-        const svgHeight = 300; // Increased height for more space
-        const barWidth = 330; // Width allocated for bars
+        const svgHeight = 300; // Total height of the SVG
+        const barWidth = 420; // Width allocated for bars
 
         const svg = d3.select('#barChart')
             .attr('width', svgWidth)
@@ -21,7 +21,7 @@ const ClimbGradeBarChart = ({ data }) => {
 
         const y = d3.scaleLinear()
             .domain([0, d3.max(data, d => d.count)])
-            .range([svgHeight - 40, 20]); // Added more space for the top
+            .range([svgHeight - 40, 20]); // Keep the top margin to 20 for y-axis labels
 
         // Create bars
         svg.append('g')
@@ -32,13 +32,13 @@ const ClimbGradeBarChart = ({ data }) => {
             .attr('x', d => x(d.grade) + (svgWidth - barWidth) / 2) // Centering bars
             .attr('y', d => y(d.count))
             .attr('width', x.bandwidth())
-            .attr('height', d => svgHeight - 40 - y(d.count)) // Adjusted for y scaling
+            .attr('height', d => svgHeight - 40 - y(d.count)) // Adjusted to make the bars taller
             .attr('fill', 'steelblue');
 
         // Create x-axis for grades
         const xAxis = d3.axisBottom(x);
         svg.append('g')
-            .attr('transform', `translate(${(svgWidth - barWidth) / 2}, ${svgHeight - 35})`) // Center x-axis
+            .attr('transform', `translate(${(svgWidth - barWidth) / 2}, ${svgHeight - 30})`) // Center x-axis
             .call(xAxis);
 
         // Create y-axis for counts with whole numbers
@@ -48,8 +48,7 @@ const ClimbGradeBarChart = ({ data }) => {
             .call(yAxis);
     }, [data]);
 
-    return <svg id="barChart" className="barChart" width="100%" height="100%" viewBox="0 0 500 260"></svg>;
-
+    return <svg id="barChart" className="barChart" width="100%" height="100%" viewBox="0 0 500 300"></svg>;
 };
 
 ClimbGradeBarChart.propTypes = {
@@ -62,5 +61,6 @@ ClimbGradeBarChart.propTypes = {
 };
 
 export default ClimbGradeBarChart;
+
 
 
