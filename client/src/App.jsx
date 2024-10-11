@@ -3,6 +3,8 @@ import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import { AuthContext, AuthProvider } from './utils/AuthContext.jsx';
 import { BrowserRouter as Router, Route, Routes, Link, Navigate } from 'react-router-dom';
 import './App.css';
+
+//pages, there has to be a better way to do this
 import Signup from './components/Signup/Signup.jsx';
 import Login from './components/Login/Login.jsx';
 import Profile from './components/Profile/Profile.jsx';
@@ -16,6 +18,8 @@ import ClimbsLog from './components/Climbs/ClimbsLog/ClimbsLog.jsx';
 import ClimbsLogPast from './components/Climbs/ClimbsLog/ClimbsLogPast/ClimbsLogPast.jsx';
 import ClimbsLogDetails from './components/Climbs/ClimbsLog/ClimbLogDetail/ClimbLogDetail.jsx';
 import ClimbStats from './components/Climbs/ClimbStats/ClimbStats.jsx';
+import SettingsMain from './components/Settings/SettingsMain/SettingsMain.jsx';
+import SettingsUserInfo from './components/Settings/SettingsMain/SettingsUserInfo/SettingsUserInfo.jsx';
 
 
 export const client = new ApolloClient({
@@ -78,24 +82,27 @@ const MainContent = () => {
   return (
       <Routes>
 
-          <Route path='/signup' element={<Signup />} />
-          <Route path='/login' element={user ? <Navigate to='/profile' /> : <Login />} />
+        <Route path='/signup' element={<Signup />} />
+        <Route path='/login' element={user ? <Navigate to='/profile' /> : <Login />} />
 
-          <Route path='/profile' element={user ? <Profile /> : <Navigate to='/login' />} />
+        <Route path='/profile' element={user ? <Profile /> : <Navigate to='/login' />} />
 
-          <Route path='/trainingMain' element={<TrainingMain />} />
-                <Route path='/trainingAdd' element={<TrainingAdd />} />
-                <Route path='/trainingPast' element={<TrainingPast />} />
-                    <Route path='/trainingPastDetails' element={<TrainingPastDetails />} />
-                <Route path='/trainingStats' element={<TrainingStats />} />
+        <Route path='/trainingMain' element={<TrainingMain />} />
+            <Route path='/trainingAdd' element={<TrainingAdd />} />
+            <Route path='/trainingPast' element={<TrainingPast />} />
+                <Route path='/trainingPastDetails' element={<TrainingPastDetails />} />
+            <Route path='/trainingStats' element={<TrainingStats />} />
 
-          <Route path='/climbsMain' element={<ClimbsMain />} />
-                <Route path='/climbsLog' element={<ClimbsLog />} />
-                <Route path='/climbsLogPast' element={<ClimbsLogPast />} />
-                    <Route path='/climbsLogDetails' element={<ClimbsLogDetails />} />
-                <Route path='/climbStats' element={<ClimbStats />} />
+        <Route path='/climbsMain' element={<ClimbsMain />} />
+            <Route path='/climbsLog' element={<ClimbsLog />} />
+            <Route path='/climbsLogPast' element={<ClimbsLogPast />} />
+                <Route path='/climbsLogDetails' element={<ClimbsLogDetails />} />
+            <Route path='/climbStats' element={<ClimbStats />} />
 
-          <Route path='*' element={<Navigate to='/login' />} />
+        <Route path='/settingsMain' element={<SettingsMain />} />
+            <Route path='/settingsUserInfo' element={<SettingsUserInfo />} />
+
+        <Route path='*' element={<Navigate to='/login' />} />
 
       </Routes>
   );

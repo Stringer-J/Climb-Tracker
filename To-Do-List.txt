@@ -1,22 +1,15 @@
 TRAINING
     fix overflow-y issue where having too many exercises pushes the footer down
-    DONE actually write code to submit workout data to database
+            =temporarily removed footer
     Need to figure out what stats to show and then show them
+    Need to fix date issue Eric found where you can go back in time to prehistoric Earth
 CLIMBS
-    DONE thought: basically want to be able to record climbs you've done
-        EXAMPLE
-        name: Drier Goods
-        area: McKinney Falls
-        subarea: Scrunchy Wall
-        type: Boulder
-        grade: V0
-        length: NA
-        # of attempts: 1
-        comments: The only easy problem at McKinney
-        photo: i-did-it.jpeg
-        video: flash-attempt.mov
-    ??? need to write logic to submit climb to database
+    Need to write logic to submit climb to database
             =need to address issue where length or numAttempts can't be empty
-    DONE need to show past climbs on climbLogDetails page
     Need to change the grades based on boulder vs sport/trad
     Need to figure out what stats to show and then show them
+            =basic bar chart appears with grade info if bar chart chosen (default)
+            =basic pie chart appears with grade info if pie chart chosen
+SETTINGS
+    Need to be able to update user info
+    Need to be able to delete user

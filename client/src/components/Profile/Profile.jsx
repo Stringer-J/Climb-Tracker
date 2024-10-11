@@ -16,6 +16,10 @@ function Profile() {
         navigate('/climbsMain');
     }
 
+    const handleSettings = () => {
+        navigate('/settingsMain');
+    }
+
     const handleLogout = () => {
         logout();
         navigate('/login');
@@ -28,7 +32,7 @@ function Profile() {
                <h1>{user.username}</h1>
                     <button className='usedButton' onClick={handleTraining}>Training</button>
                     <button className='usedButton' onClick={handleClimbs}>Climbs</button>
-                    <button className='unusedButton'>Settings</button>
+                    <button className='usedButton' onClick={handleSettings}>Settings</button>
                     <button className='usedButton' onClick={handleLogout}>Logout</button>
             </div>
         </>

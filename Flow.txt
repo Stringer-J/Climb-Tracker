@@ -12,3 +12,5 @@ ROOT
                 -VIEW PAST CLIMBS
                     -DETAIL PAGE
                 -STATS
+            -SETTINGS
+                -USER INFO
