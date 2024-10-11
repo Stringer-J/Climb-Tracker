@@ -2,6 +2,7 @@ import { useContext } from 'react';
 import { AuthContext } from '../../../utils/AuthContext';
 import { useQuery } from '@apollo/client';
 import { GET_CLIMBS } from '../../../utils/queries';
+import ClimbGradeBarChart from '../../../D3/climbGradeBarChart';
 import './ClimbStats.css';
 
 function ClimbStats() {
@@ -29,6 +30,8 @@ function ClimbStats() {
         climbData[grade].count +=1;
 
     });
+
+    const gradeData = Object.entries(climbData).map(([grade, { count }]) => ({ grade, count }));
     
     return (
         <>
@@ -44,6 +47,9 @@ function ClimbStats() {
                             </li>
                         ))}
                     </ul>
+                </div>
+                <div>
+                    <ClimbGradeBarChart data={gradeData} />
                 </div>
             </div>
         </>
