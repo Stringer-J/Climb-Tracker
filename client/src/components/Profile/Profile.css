@@ -5,3 +5,7 @@
     height: 100%;
 }
 
+.profileBody h1 {
+    border-bottom: solid black 3px;
+}
+

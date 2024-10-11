@@ -52,13 +52,15 @@ html, body {
 }
 
 .usedButton {
-  width: 100%;
+  width: 50%;
   height: 5vh;
+  margin-bottom: 1%;
   color: aliceblue;
-  background-color: gray;
+  background-color: black;
+  border-radius: 10px;
 }
 
 .unusedButton {
-  width: 100%;
+  width: 50%;
   height: 5vh;
 }
