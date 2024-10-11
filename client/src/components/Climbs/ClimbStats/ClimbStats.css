@@ -10,3 +10,12 @@
     width: 100vw;  /* Set width relative to viewport */
     margin: 0 auto; /* Center the chart */
 }
+
+.pieChart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40vh; /* Set height relative to viewport */
+    width: 100vw;  /* Set width relative to viewport */
+    margin: 0 auto; /* Center the chart */
+}

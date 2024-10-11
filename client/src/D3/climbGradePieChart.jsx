@@ -6,8 +6,8 @@ const ClimbGradePieChart = ({ data }) => {
     const ref = useRef();
 
     useEffect(() => {
-        const width = 300;
-        const height = 300;
+        const width = 250;
+        const height = 250;
         const radius = Math.min(width, height) / 2;
 
         const svg = d3.select(ref.current)
