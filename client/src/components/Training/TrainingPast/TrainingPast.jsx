@@ -26,7 +26,7 @@ function TrainingPast() {
     return (
         <>
             <div className='trainingPastBody'>
-                TRAINING PAST<br /><br />
+                LOGGED WORKOUTS<br /><br />
                 {data.getWorkouts.length > 0 ? (
                     <ul>
                         {data.getWorkouts.map((workout, index) => (

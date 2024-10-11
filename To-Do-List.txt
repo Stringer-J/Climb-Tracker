@@ -1,10 +1,11 @@
 ALL
-    Good for now
+    Page is starting to be really hard to look at, maybe it's time to consider style at least a little bit
 MAIN
     Needs to check password as well when logging in (can avoid for now for convenience sake)
 TRAINING
-    Need to figure out what stats to show and then show them
+    Need to figure out what stats to show and then show them (not priority)
     Need to fix date issue Eric found where you can go back in time to prehistoric Earth
+    Need to make logged workout appear in order by date
 CLIMBS
     Need to write logic to submit climb to database
             =need to address issue where length or numAttempts can't be empty
@@ -12,7 +13,7 @@ CLIMBS
     Need to figure out what stats to show and then show them
             =basic bar chart appears with grade info if bar chart chosen (default)
             =basic pie chart appears with grade info if pie chart chosen
-            xData appears in order it was put in database, not in the proper order
+            xData appears in order it was put in database, not by grade, easiest to hardest
 SETTINGS
     Need to be able to update user info
     Need to be able to delete user

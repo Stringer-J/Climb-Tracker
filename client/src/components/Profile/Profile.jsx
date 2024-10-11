@@ -28,7 +28,6 @@ function Profile() {
     return (
         <>
             <div className='profileBody'>
-               PROFILE<br />
                <h1>{user.username}</h1>
                     <button className='usedButton' onClick={handleTraining}>Training</button>
                     <button className='usedButton' onClick={handleClimbs}>Climbs</button>
