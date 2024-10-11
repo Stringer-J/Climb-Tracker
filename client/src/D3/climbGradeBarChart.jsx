@@ -48,7 +48,8 @@ const ClimbGradeBarChart = ({ data }) => {
             .call(yAxis);
     }, [data]);
 
-    return <svg id="barChart"></svg>;
+    return <svg id="barChart" className="barChart" width="100%" height="100%" viewBox="0 0 500 260"></svg>;
+
 };
 
 ClimbGradeBarChart.propTypes = {
