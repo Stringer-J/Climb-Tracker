@@ -48,7 +48,7 @@ function ClimbStats() {
                         ))}
                     </ul>
                 </div><br />
-                <div>
+                <div className='barChart'>
                     Grade Bar Chart<hr /><br />
                     <ClimbGradeBarChart data={gradeData} />
                 </div>

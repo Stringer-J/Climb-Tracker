@@ -4,20 +4,24 @@ import PropTypes from "prop-types";
 
 const ClimbGradeBarChart = ({ data }) => {
     useEffect(() => {
+        const svgWidth = 500;
+        const svgHeight = 300; // Increased height for more space
+        const barWidth = 330; // Width allocated for bars
+
         const svg = d3.select('#barChart')
-            .attr('width', 325)
-            .attr('height', 225);
+            .attr('width', svgWidth)
+            .attr('height', svgHeight);
 
         svg.selectAll('*').remove(); // Clear previous drawings
 
         const x = d3.scaleBand()
             .domain(data.map(d => d.grade))
-            .range([0, 325])
+            .range([0, barWidth])
             .padding(0.1);
 
         const y = d3.scaleLinear()
             .domain([0, d3.max(data, d => d.count)])
-            .range([225, 0]); // Inverted for y-axis
+            .range([svgHeight - 40, 20]); // Added more space for the top
 
         // Create bars
         svg.append('g')
@@ -25,42 +29,23 @@ const ClimbGradeBarChart = ({ data }) => {
             .data(data)
             .enter()
             .append('rect')
-            .attr('x', d => x(d.grade))
+            .attr('x', d => x(d.grade) + (svgWidth - barWidth) / 2) // Centering bars
             .attr('y', d => y(d.count))
             .attr('width', x.bandwidth())
-            .attr('height', d => 225 - y(d.count))
+            .attr('height', d => svgHeight - 40 - y(d.count)) // Adjusted for y scaling
             .attr('fill', 'steelblue');
-
-        // Add grade labels at the bottom of each bar
-        svg.selectAll('.grade-label')
-            .data(data)
-            .enter()
-            .append('text')
-            .attr('class', 'grade-label')
-            .attr('x', d => x(d.grade) + x.bandwidth() / 2) // Centered on each bar
-            .attr('y', 220) // Positioned just below the x-axis
-            .attr('text-anchor', 'middle')
-            .text(d => d.grade);
 
         // Create x-axis for grades
         const xAxis = d3.axisBottom(x);
         svg.append('g')
-            .attr('transform', 'translate(0, 225)')
+            .attr('transform', `translate(${(svgWidth - barWidth) / 2}, ${svgHeight - 35})`) // Center x-axis
             .call(xAxis);
 
-        // Create y-axis for counts
-        const yAxis = d3.axisLeft(y);
+        // Create y-axis for counts with whole numbers
+        const yAxis = d3.axisLeft(y).ticks(d3.max(data, d => d.count)); // Using ticks for whole numbers
         svg.append('g')
-            .attr('transform', 'translate(0, 0)') // Position y-axis at the left
+            .attr('transform', `translate(${(svgWidth - barWidth) / 2}, 0)`) // Center y-axis
             .call(yAxis);
-
-        // Add y-axis label
-        svg.append('text')
-            .attr('transform', 'rotate(-90)')
-            .attr('y', 20)
-            .attr('x', -50)
-            .style('text-anchor', 'middle')
-            .text('Count');
     }, [data]);
 
     return <svg id="barChart"></svg>;
@@ -76,3 +61,5 @@ ClimbGradeBarChart.propTypes = {
 };
 
 export default ClimbGradeBarChart;
+
+
