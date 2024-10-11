@@ -1,3 +1,6 @@
+MAIN
+    Sign Up button needs to go away when logged in
+    Profile button should take up whole row I guess, at least for now since I need it for navigation
 TRAINING
     Need to figure out what stats to show and then show them
     Need to fix date issue Eric found where you can go back in time to prehistoric Earth
@@ -8,6 +11,12 @@ CLIMBS
     Need to figure out what stats to show and then show them
             =basic bar chart appears with grade info if bar chart chosen (default)
             =basic pie chart appears with grade info if pie chart chosen
+            xData appears in order it was put in database, not in the proper order
 SETTINGS
     Need to be able to update user info
     Need to be able to delete user
+
+======================================================================================================================================
+
+REPO
+    Need to seriously reevaluate folder structure

@@ -28,7 +28,7 @@ html, body {
 .footer {
   background-color: lightblue;
   border-top: solid black 2px;
-  height: 7%;
+  height: 3%;
   display: flex;
   justify-content: center;
   align-items: center;
