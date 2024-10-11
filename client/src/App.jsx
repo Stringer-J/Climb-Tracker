@@ -46,6 +46,12 @@ function App() {
 
                         <LoginProfileButton />
 
+                        <TrainingButton />
+
+                        <ClimbsButton />
+
+                        <SettingsButton />
+
                     </div>
 
                     <div className='mainContent'>
@@ -81,6 +87,51 @@ const LoginProfileButton = () => {
     return !isProfilePage ? (
         <Link to={user ? '/profile' : '/login'}>
             <button className='usedButton'>{user ? 'Profile' : 'Login'}</button>
+        </Link>
+    ) : null;
+};
+
+const TrainingButton = () => {
+    const { user } = useContext(AuthContext);
+    const location = useLocation();
+
+    const isTrainingAdd = location.pathname === '/trainingAdd';
+    const isTrainingPast = location.pathname === '/trainingPast';
+    const isTrainingPastDetails = location.pathname === '/trainingPastDetails';
+    const isTrainingStats = location.pathname === '/trainingStats';
+
+    return isTrainingAdd || isTrainingPast || isTrainingPastDetails || isTrainingStats ? (
+        <Link to={user ? '/trainingMain' : '/login'}>
+            <button className='usedButton'>Training</button>
+        </Link>
+    ) : null;
+};
+
+const ClimbsButton = () => {
+    const { user } = useContext(AuthContext);
+    const location = useLocation();
+
+    const isClimbsLog = location.pathname === '/climbsLog';
+    const isClimbsLogPast = location.pathname === '/climbsLogPast';
+    const isClimbsLogDetails = location.pathname === '/climbsLogDetails';
+    const isClimbStats = location.pathname === '/climbStats';
+
+    return isClimbsLog || isClimbsLogPast || isClimbsLogDetails || isClimbStats ? (
+        <Link to={user ? '/climbsMain' : '/login'}>
+            <button className='usedButton'>Climbs</button>
+        </Link>
+    ) : null;
+};
+
+const SettingsButton = () => {
+    const { user } = useContext(AuthContext);
+    const location = useLocation();
+
+    const isSettingsUserInfo = location.pathname === '/settingsUserInfo';
+
+    return isSettingsUserInfo ? (
+        <Link to={user ? '/settingsMain' : '/login'}>
+            <button className='usedButton'>Settings</button>
         </Link>
     ) : null;
 };

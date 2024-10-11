@@ -1,5 +1,7 @@
-MAIN
+ALL
     Good for now
+MAIN
+    Needs to check password as well when logging in (can avoid for now for convenience sake)
 TRAINING
     Need to figure out what stats to show and then show them
     Need to fix date issue Eric found where you can go back in time to prehistoric Earth
