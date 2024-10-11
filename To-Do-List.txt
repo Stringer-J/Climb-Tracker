@@ -1,6 +1,5 @@
 MAIN
-    Sign Up button needs to go away when logged in
-    Profile button should take up whole row I guess, at least for now since I need it for navigation
+    Good for now
 TRAINING
     Need to figure out what stats to show and then show them
     Need to fix date issue Eric found where you can go back in time to prehistoric Earth

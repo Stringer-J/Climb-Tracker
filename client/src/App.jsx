@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import { AuthContext, AuthProvider } from './utils/AuthContext.jsx';
-import { BrowserRouter as Router, Route, Routes, Link, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Link, Navigate, useLocation } from 'react-router-dom';
 import './App.css';
 
 //pages, there has to be a better way to do this
@@ -42,11 +42,9 @@ function App() {
 
                     <div className='mainButtons'>
               
-                        <Link to='/signup'>
-                            <button className='mainButton'>Sign Up</button>
-                        </Link>
+                        <SignUpButton />
 
-                        <MainButton />
+                        <LoginProfileButton />
 
                     </div>
 
@@ -64,14 +62,27 @@ function App() {
   )
 }
 
-const MainButton = () => {
+const SignUpButton = () => {
     const { user } = useContext(AuthContext);
 
-    return (
-        <Link to={user ? '/profile' : '/login'}>
-            <button className='mainButton'>{user ? 'Profile' : 'Login'}</button>
+    return !user ? (
+        <Link to='/signup'>
+            <button className='usedButton'>Sign Up</button>
         </Link>
-    );
+    ) : null;
+};
+
+const LoginProfileButton = () => {
+    const { user } = useContext(AuthContext);
+    const location = useLocation();
+
+    const isProfilePage = location.pathname === '/profile';
+
+    return !isProfilePage ? (
+        <Link to={user ? '/profile' : '/login'}>
+            <button className='usedButton'>{user ? 'Profile' : 'Login'}</button>
+        </Link>
+    ) : null;
 };
 
 const MainContent = () => {
