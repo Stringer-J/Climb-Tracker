@@ -37,9 +37,9 @@ function ClimbStats() {
         <>
             <div className='climbStatsBody'>
                 CLIMBING STATS<br /><br />
-                <div># of Climbs:<hr />{climbCount}</div><br />
+                <div># of Climbs<hr />{climbCount}</div><br />
                 <div>
-                    Grades:<hr /><br />
+                    Grades<hr /><br />
                     <ul>
                         {Object.entries(climbData).map(([grade, { count }]) => (
                             <li key={grade}>
@@ -47,8 +47,9 @@ function ClimbStats() {
                             </li>
                         ))}
                     </ul>
-                </div>
+                </div><br />
                 <div>
+                    Grade Bar Chart<hr /><br />
                     <ClimbGradeBarChart data={gradeData} />
                 </div>
             </div>
