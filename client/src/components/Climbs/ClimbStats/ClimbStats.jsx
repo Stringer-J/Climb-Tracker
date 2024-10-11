@@ -1,11 +1,13 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { AuthContext } from '../../../utils/AuthContext';
 import { useQuery } from '@apollo/client';
 import { GET_CLIMBS } from '../../../utils/queries';
 import ClimbGradeBarChart from '../../../D3/climbGradeBarChart';
+import ClimbGradePieChart from '../../../D3/climbGradePieChart';
 import './ClimbStats.css';
 
 function ClimbStats() {
+    const [selectedChart, setSelectedChart] = useState('bar');
     const { user } = useContext(AuthContext);
     const { loading, error, data } = useQuery(GET_CLIMBS, {
         variables: { userId: user._id },
@@ -32,6 +34,14 @@ function ClimbStats() {
     });
 
     const gradeData = Object.entries(climbData).map(([grade, { count }]) => ({ grade, count }));
+
+    const handleBarButtonClick = () => {
+        setSelectedChart('bar');
+    };
+
+    const handlePieButtonClick = () => {
+        setSelectedChart('pie');
+    };
     
     return (
         <>
@@ -49,10 +59,18 @@ function ClimbStats() {
                     </ul>
                 </div><br />
                 Grade Chart<hr />
-                <button>BAR</button>
-                <button>PIE</button>
-                <div className='barChart'>
-                    <ClimbGradeBarChart data={gradeData} />
+                <button onClick={handleBarButtonClick}>BAR</button>
+                <button onClick={handlePieButtonClick}>PIE</button>
+                <div className='chartContainer'>
+                    {selectedChart === 'bar' ? (
+                        <div className='barChart'>
+                            <ClimbGradeBarChart data={gradeData} />
+                        </div>
+                    ) : (
+                        <div className='pieChart'>
+                            <ClimbGradePieChart data={gradeData} />
+                        </div>
+                    )}
                 </div>
             </div>
         </>
