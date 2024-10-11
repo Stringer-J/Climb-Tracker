@@ -1,6 +1,4 @@
 TRAINING
-    fix overflow-y issue where having too many exercises pushes the footer down
-            =temporarily removed footer
     Need to figure out what stats to show and then show them
     Need to fix date issue Eric found where you can go back in time to prehistoric Earth
 CLIMBS

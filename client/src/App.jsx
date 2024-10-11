@@ -54,9 +54,9 @@ function App() {
                         <MainContent />
                     </div>
 
-                    {/* <div className='footer'>
+                    <div className='footer'>
                         <h4>This is a footer</h4>
-                    </div> */}
+                    </div>
 
                 </div>
             </Router>
