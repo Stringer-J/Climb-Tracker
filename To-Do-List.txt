@@ -9,14 +9,18 @@ TRAINING
 CLIMBS
     Need to write logic to submit climb to database
             =need to address issue where length or numAttempts can't be empty
+            =Need to fix date issue Eric found where you can go back in time to prehistoric Earth
     Need to change the grades based on boulder vs sport/trad
+    Figure out why type comes back lowercase on details page
+    Need to get rid of comman before subArea if there is no subArea
     Need to figure out what stats to show and then show them
             =basic bar chart appears with grade info if bar chart chosen (default)
             =basic pie chart appears with grade info if pie chart chosen
             xData appears in order it was put in database, not by grade, easiest to hardest
 SETTINGS
     Need to be able to update user info
-    Need to be able to delete user
+            =password and whatever else
+    Need to be able to delete user (maybe hold off so i don't delete an important test account)
 
 ======================================================================================================================================
 
