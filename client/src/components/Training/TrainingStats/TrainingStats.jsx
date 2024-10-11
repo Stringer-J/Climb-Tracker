@@ -17,16 +17,31 @@ function TrainingStats() {
     const workouts = data.getWorkouts || [];
     const workoutCount = workouts.length;
 
-    const exerciseCount = {};
+    const exerciseData = {};
 
     workouts.forEach(workout => {
         workout.exercises.forEach(exercise => {
             const name = exercise.name;
+            const sets = exercise.sets;
+            const reps = exercise.reps;
+            const weight = exercise.weight;
 
-            if (exerciseCount[name]) {
-                exerciseCount[name] += 1;
-            } else {
-                exerciseCount[name] = 1;
+            if (!exerciseData[name]) {
+                exerciseData[name] = { count: 0, maxSets: 0, maxReps: 0, maxWeight: 0 };
+            }
+
+            exerciseData[name].count +=1;
+
+            if (weight > exerciseData[name].maxSets) {
+                exerciseData[name].maxSets = sets;
+            }
+
+            if (weight > exerciseData[name].maxReps) {
+                exerciseData[name].maxReps = reps;
+            }
+
+            if (weight > exerciseData[name].maxWeight) {
+                exerciseData[name].maxWeight = weight;
             }
         });
     });
@@ -37,11 +52,15 @@ function TrainingStats() {
                 TRAINING STATS<br /><br />
                 <div># of Workouts: <hr />{workoutCount}</div><br />
                 <div>
-                    Exercises:<hr />
+                    Exercises:<hr /><br />
                     <ul>
-                        {Object.entries(exerciseCount).map(([exercise, count]) => (
+                        {Object.entries(exerciseData).map(([exercise, { count, maxSets, maxReps, maxWeight }]) => (
                             <li key={exercise}>
-                                {exercise}: {count} times
+                                {exercise}:<br />
+                                {count} times<br />
+                                Max Sets: {maxSets}<br />
+                                Max Reps: {maxReps}<br />
+                                Max Weight: {maxWeight} lbs<br /><br />
                             </li>
                         ))}
                     </ul>
